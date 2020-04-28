@@ -1,0 +1,116 @@
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+#用户信息
+user:
+  #用户头像地址
+  img: http://192.168.1.64:8081/static/logo.jpg
+  #服务器地址
+#  img: http://118.31.164.73:8480/static/logo.jpg
+
+spring:
+  mvc:
+    static-path-pattern: /**
+  #资源绝对路径
+  resources:
+#    本地
+    static-locations: file:D:/work/images, classpath:/static/
+#    服务器
+#    static-locations: file:/home/zwj/static, classpath:/static/
+  # 数据源配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/jukeyouxuan?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root123456
+    driver-class-name: com.mysql.jdbc.Driver
+
+  # redis配置
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    lettuce:
+      pool:
+        # 连接池最大连接数
+        max-active: 200
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最大空闲连接
+        max-idle: 10
+        # 连接池中的最小空闲连接
+        min-idle: 0
+    # 连接超时时间（毫秒）
+    timeout: 1000ms
+#模板引擎
+  thymeleaf:
+    cache: false
+
+
+# mybatis-plus 相关配置
+mybatis-plus:
+  # 指定mybatis给实体类自动取别名的路径
+  typeAliasesPackage: com.ggh.entity.*
+  # 指定xxxMapper.xml所在的地址
+  mapperLocations: classpath:/mappers/*Mapper.xml
+  #  typeEnumsPackage: com.jishi.entity.enums
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    id-type: AUTO
+    #驼峰下划线转换
+    column-underline: true
+    db-type: mysql
+
+# 分页配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+#本地地址
+HOST_PORT: http://192.168.1.64:8081
+FILE_ADDRESS: D://work
+
+
+aliPay:
+  #应用编号
+  appId: 
+  #应用私钥
+  privateKey: 
+  #支付宝公钥，通过应用公钥上传到支付宝开放平台换取支付宝公钥(如果是证书模式，公钥与私钥在CSR目录)。
+  publicKey: 
+  #应用公钥证书
+  appCertPath:
+  #支付宝公钥证书
+  aliPayCertPath:
+  #支付宝根证书
+  aliPayRootCertPath:
+  #支付宝支付网关，沙箱环境时设置为 https://openapi.alipaydev.com/gateway.do 使用正式环境时设置为 https://openapi.alipay.com/gateway.do
+  serverUrl: https://openapi.alipay.com/gateway.do
+  #外网访问项目的域名，支付通知中会使用
+  domain: 
+
+
+
+wxPay:
+  #应用编号
+  appId:
+  #appSecret 是 appId 对应的接口密码，微信公众号授权获取用户 openId 时使用
+  appSecret:
+  #微信支付商户号
+  mchId:
+  #API 密钥
+  partnerKey:
+  #apiclient_cert.p1 证书路径，在微信商户后台下载
+  certPath:
+  #外网访问项目的域名，支付通知中会使用
+  domain:
